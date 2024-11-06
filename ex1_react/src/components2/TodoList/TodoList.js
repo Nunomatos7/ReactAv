@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import "../TodoList/TodoList.css";
+import PropTypes from 'prop-types';  // Import PropTypes
+import './TodoList.css';
 
 function TodoList({ todos, toggleComplete, deleteTodo, editTodo }) {
   const [editingId, setEditingId] = useState(null);
@@ -8,24 +9,24 @@ function TodoList({ todos, toggleComplete, deleteTodo, editTodo }) {
   const handleEditClick = (todo) => {
     setEditingId(todo.id);
     setNewTask(todo.task);
-  }
+  };
 
   const handleSaveClick = (id) => {
     editTodo(id, newTask);
     setEditingId(null);
     setNewTask('');
-  }
+  };
 
   return (
     <div>
       <h2>Task List</h2>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>
+          <li className='li' key={todo.id}>
             <input
               type="checkbox"
               checked={todo.completed}
-              onChange={() => toggleComplete(todo.id) }
+              onChange={() => toggleComplete(todo.id)}
             />
             {editingId === todo.id ? (
               <>
@@ -49,5 +50,19 @@ function TodoList({ todos, toggleComplete, deleteTodo, editTodo }) {
     </div>
   );
 }
+
+// Define PropTypes for TodoList
+TodoList.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      task: PropTypes.string.isRequired,
+      completed: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  toggleComplete: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
+  editTodo: PropTypes.func.isRequired,
+};
 
 export default TodoList;

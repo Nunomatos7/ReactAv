@@ -9,7 +9,7 @@ h2 {
     padding: 0;
   }
   
-  li {
+  .li {
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "../TodoList/TodoList.css";
 
-function TodoList({ todos, toogleComplete, deleteTodo, editTodo }) {
+function TodoList({ todos, toggleComplete, deleteTodo, editTodo }) {
   const [editingId, setEditingId] = useState(null);
   const [newTask, setNewTask] = useState('');
 
@@ -25,7 +25,7 @@ function TodoList({ todos, toogleComplete, deleteTodo, editTodo }) {
             <input
               type="checkbox"
               checked={todo.completed}
-              onChange={() => toogleComplete(todo.id) }
+              onChange={() => toggleComplete(todo.id) }
             />
             {editingId === todo.id ? (
               <>

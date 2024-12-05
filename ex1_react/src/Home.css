@@ -1,0 +1,8 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center;     /* Center horizontally */
+    height: 80vh;           /* Full viewport height */
+    text-align: center;      /* Center text */
+}

@@ -29,6 +29,10 @@ function TodoApp() {
     return matchesFilter && matchesSearch;
   });
 
+  useEffect(() => {
+    document.title = "TODO App 1";
+  }, []);
+
   function toggleComplete(id) { 
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
